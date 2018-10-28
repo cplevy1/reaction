@@ -29,8 +29,6 @@ COPY --chown=node . $APP_SOURCE_DIR
 ##############################################################################
 FROM meteor-dev as builder
 
-RUN mkdir "/opt/reaction/src/imports/plugins/custom"
-
 RUN printf "\\n[-] Running Reaction plugin loader...\\n" \
  && reaction plugins load
 RUN printf "\\n[-] Building Meteor application...\\n" \
