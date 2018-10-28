@@ -15,7 +15,7 @@ COPY --chown=node package.json $APP_SOURCE_DIR/
 # Without this NPM cannot write packages into node_modules later, when running in a container.
 RUN mkdir "$APP_SOURCE_DIR/node_modules" && chown node "$APP_SOURCE_DIR/node_modules"
 
-RUN apt-get install -y git
+RUN ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
 
 RUN git clone git@github.com:reaction-contrib/meteor-shipping-shippo.git "$APP_SOURCE_DIR/imports/plugins/custom"
 RUN git clone git@github.com:reaction-contrib/meteor-payments-paypal-express.git "$APP_SOURCE_DIR/imports/plugins/custom"
